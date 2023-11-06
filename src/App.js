@@ -41,32 +41,36 @@ function App() {
       return (
         <div>
           {session === "false" && (
+            <div className='flexing'>
             <div>
-              <h2>Register Form</h2>
+              <h2>New User, Register here</h2>
               <form onSubmit={handleSubmit}>
                 <div>
-                  <label htmlFor="username">Username:</label>
+                  <label htmlFor="username" className='texting'>Username:</label>
                   <input
                     type="text"
                     id="username"
                     placeholder="Enter your username"
+                    className='texting'
                     value={username}
                     onChange={handleUsernameChange}
                   />
                 </div>
                 <div>
-                  <label htmlFor="password">Password:</label>
+                  <label htmlFor="password" className='texting'>Password:</label>
                   <input
                     type="password"
                     id="password"
+                    className='texting'
                     placeholder="Enter your password"
                     value={password}
                     onChange={handlePasswordChange}
                   />
                 </div>
-                <button type="submit">Submit</button>
+                <button type="submit" className='btn btn-primary'>Submit</button>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
               </form>
+              </div>
             </div>
           )}
           {session==="true" && <Filterresult setsession={setsession} username={username} />}

@@ -37,19 +37,19 @@ async function findallreviews(){
   }
   return (
     <div>
-      <h3>{props.currentname}</h3>
+      <h3 className="heading-changer">{props.currentname}</h3>
       <form onSubmit={handleSubmitbutton}>
         <div>
-          <label>ADD Review here:</label>
           <textarea
             placeholder="Enter the content"
+            className="texting"
             value={content}
             onChange={(e) => setcontent(e.target.value)}
           ></textarea>
         </div>
 
         <div>
-          <label>ADD Rating⭐</label>
+          <label className="texting">ADD Rating⭐</label>
           <select value={rating} onChange={(e) => setrating(e.target.value)}>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -58,7 +58,8 @@ async function findallreviews(){
             <option value="5">5</option>
           </select>
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" className="btn btn-primary extra">Submit</button>
+        
       </form>
       <ul>
         {allreviews.map((item, index) => (

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import Review from './Review';
+import './App.css'
 const Filterresult = (props) => {
 
 const [bycity,setbycity]=useState('');
@@ -30,47 +31,50 @@ const [currentname,setcurrentname]=useState('');
  }
 
   return (
-    <div>
+    <div className='flexer'>
         
         <form onSubmit={handleSubmitted}>
           <div>
-            <label>City:</label>
+            <label className='texting pad-left' >City:</label>
             <input
               type="text"
               placeholder="Enter the city"
               value={bycity}
+              className='texting'
               onChange={(e)=>setbycity(e.target.value)}
             />
           </div>
           <div>
-            <label>Type:</label>
+            <label className='texting pad-left-less'>Type:</label>
             <input
               type="text"
               placeholder="Enter the Type"
               value={bytype}
+              className='texting'
               onChange={(e)=>setbytype(e.target.value)}
             />
           </div>
           <div>
-            <label>Name:</label>
+            <label className='texting'>Name:</label>
             <input
               type="text"
               placeholder="Enter the Name"
               value={byname}
+              className='texting'
               onChange={(e)=>setbyname(e.target.value)}
             />
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit" className='btn btn-primary' style={{backgroundColor:"green"}}>Get filter Data</button>
           </form>
 
-          <div>
+        <div>
       
       {resulttoggle==="true" &&
       <div>
         <h3>Response Data:</h3>
       <ul>
         {results.map((item, index) => (
-          <div style={{border:"solid grey"}}>
+          <div style={{border:"solid grey", width:"30vh"}} className='wrap'>
             <li onClick={() =>reviews(item.name)} key={index} style={{color:"red", cursor:"pointer"}}>{item.name}</li>
             <li key={index}>{item.address_1}</li>
             <li key={index}>{item.phone}</li>
