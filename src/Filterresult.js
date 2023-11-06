@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import Review from './Review';
-const Filterresult = () => {
+const Filterresult = (props) => {
 
 const [bycity,setbycity]=useState('');
 const [bytype,setbytype]=useState('');
@@ -82,7 +82,7 @@ const [currentname,setcurrentname]=useState('');
       </div>
 }
 {resulttoggle==="false" && 
-    <Review currentname={currentname}/>
+    <Review currentname={currentname} username={props.username}/>
 }
     </div>
     </div>

@@ -4,6 +4,9 @@ const Review = (props) => {
   const [content, setcontent] = useState("");
   const [rating, setrating] = useState("");
   const [cnt,setcnt]=useState(0);
+  const [allreviews,setallreviews]=useState([]);
+  
+
 async function findallreviews(){
     const reviewdata = await axios.get('/allreviews',{
         params: {
@@ -12,7 +15,7 @@ async function findallreviews(){
     })
         
     console.log(reviewdata.data);
-
+    setallreviews(reviewdata.data);
 }
   useEffect(()=>{
     findallreviews();
@@ -25,7 +28,8 @@ async function findallreviews(){
     const response=await axios.post('/newreview',{
         rating: rating,
         content: content,
-        brewery_name: props.currentname
+        brewery_name: props.currentname,
+        username: props.username
     })
     setcnt((prev)=> prev+1)
     console.log(response.data);
@@ -56,6 +60,15 @@ async function findallreviews(){
         </div>
         <button type="submit">Submit</button>
       </form>
+      <ul>
+        {allreviews.map((item, index) => (
+          <div style={{border:"solid grey"}}>
+            <li key={index} style={{color:"green"}}>{item.username}</li>
+            <li key={index}>{item.content}</li>
+            <li key={index}>{item.rating}⭐</li>
+          </div>
+        ))}
+      </ul>
     </div>
   );
 };

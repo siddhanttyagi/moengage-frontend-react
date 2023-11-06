@@ -69,7 +69,7 @@ function App() {
               </form>
             </div>
           )}
-          {session==="true" && <Filterresult setsession={setsession} />}
+          {session==="true" && <Filterresult setsession={setsession} username={username} />}
           {session==="true" && (<div>hello</div>)}
         </div>
       );
