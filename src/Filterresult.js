@@ -14,7 +14,7 @@ const [currentname,setcurrentname]=useState('');
     e.preventDefault();
     const response=await axios.post('/filterresult',{
         by_city: bycity,
-        by_type: byname,
+        by_type: bytype,
         by_name: byname
     });
     settoggle("true")
