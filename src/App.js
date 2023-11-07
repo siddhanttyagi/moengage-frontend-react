@@ -3,12 +3,14 @@ import './App.css';
 import { useState } from 'react';
 import axios from 'axios';
 import Filterresult from './Filterresult';
+import Login from './Login';
 function App() {
   
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [session,setsession]=useState('false');
+    const [switching,setswitching]=useState('false')
   
     const handleUsernameChange = (e) => {
       setUsername(e.target.value);
@@ -40,7 +42,7 @@ function App() {
    
       return (
         <div>
-          {session === "false" && (
+          {session === "false" && switching==="false" && (
             <div className='flexing'>
             <div>
               <h2>New User, Register here</h2>
@@ -71,10 +73,14 @@ function App() {
                 {error && <p style={{ color: 'red' }}>{error}</p>}
               </form>
               </div>
+              <div style={{display:"flex",flexDirection:"column", alignItems:"center"}}><p>already have account ? <u onClick={()=>setswitching("true")} style={{cursor:"pointer"}}>click here to login</u></p></div>
             </div>
+          
           )}
+          
           {session==="true" && <Filterresult setsession={setsession} username={username} />}
-          {session==="true" && (<div>hello</div>)}
+          
+          {switching==="true" && <Login session={session} setsession={setsession} />}
         </div>
       );
       
